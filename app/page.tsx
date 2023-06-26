@@ -2,6 +2,7 @@
 import { useState } from 'react';
 // import { useRouter } from 'next/router';
 import { v4 as uuid } from 'uuid';
+import Container from './components/Container';
 
 export default function Home() {
   const [referralLink, setReferralLink] = useState('');
@@ -21,12 +22,17 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <button onClick={handleGenerateLink}>Click to generate your referral link</button>
-      <br />
-      <input type="text" value={referralLink} readOnly />
-      <br />
-      <button onClick={handleCopyToClipboard}>Copy</button>
+    <div className=''>
+      <Container>
+        <div className='flex flex-col pt-20 py-2'>
+          <button className='' onClick={handleGenerateLink}>Click to generate your referral link</button>
+        
+          <input className='w-auto' type="text" value={referralLink} readOnly />
+          <button onClick={handleCopyToClipboard}>Copy</button>
+        </div>
+        
+      </Container>
+      
     </div>
   );
 };
