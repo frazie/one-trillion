@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String  @id @default(uuid())
+  name     String
+  email    String
+  createdAt DateTime @default(now())
+  
+  referrals ReferralLink[]
+}
+
+model ReferralLink {
+  id            Int      @id @default(autoincrement())
+  referrer      User     @relation(fields: [referrerId], references: [id])
+  referralLink  String
+  referrerId    String
+  
+  createdAt     DateTime @default(now())
+}
+
+
+
