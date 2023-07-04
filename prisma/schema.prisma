@@ -10,23 +10,35 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id       String  @id @default(uuid())
-  name     String
-  email    String
+model User { //this is the user schema which will have the needed field for keeping information collected for the application
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String?
+  email String? @unique
+  emailverified DateTime?
+  hashedPassword String?
   createdAt DateTime @default(now())
-  
-  referrals ReferralLink[]
+  referrer String?
+  referralId String? @db.ObjectId @unique
+
+  referrals Referral[]
+  treesPlanted Trees[]
 }
 
-model ReferralLink {
-  id            Int      @id @default(autoincrement())
-  referrer      User     @relation(fields: [referrerId], references: [id])
-  referralLink  String
-  referrerId    String
-  
-  createdAt     DateTime @default(now())
+model Referral {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  referralLink String @db.String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade) 
 }
 
+model Trees {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId 
+  tree Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade) 
+}
