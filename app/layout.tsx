@@ -1,4 +1,5 @@
 import ClientOnly from './components/ClientOnly'
+import Modal from './components/modals/Modal'
 import Navbar from './components/navbar/Navbar'
 import './globals.css'
 import { Inter } from 'next/font/google'
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ClientOnly>
+          <Modal secondaryActionLabel='trial' actionLabel='generate referral link' title='login modal' isOpen />
           <Navbar />
         </ClientOnly>
         
