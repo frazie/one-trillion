@@ -12,7 +12,7 @@ export default function Home() {
     const referrerId = '33333'; // Replace with the actual referrer ID
     const id = uuid().split('-')[0]; // Extracting the first segment of UUID
 
-    const link = `http://localhost:3000//signup?ref=${referrerId}&id=${id}`;
+    const link = `http://localhost:3000/signup?ref=${referrerId}&id=${id}`;
     setReferralLink(link);
   };
 
