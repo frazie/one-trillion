@@ -3,6 +3,7 @@ import { useState } from 'react';
 // import { useRouter } from 'next/router';
 import { v4 as uuid } from 'uuid';
 import Container from './components/Container';
+import { toast } from 'react-hot-toast'
 
 export default function Home() {
   const [referralLink, setReferralLink] = useState('');
@@ -13,12 +14,13 @@ export default function Home() {
     const id = uuid().split('-')[0]; // Extracting the first segment of UUID
 
     const link = `http://localhost:3000/signup?ref=${referrerId}&id=${id}`;
+    toast.loading('generating your referral link', {duration: 500})
     setReferralLink(link);
   };
 
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(referralLink);
-    alert('Copied to clipboard!');
+    toast.success('Copied to clipboard!')
   };
 
   return (

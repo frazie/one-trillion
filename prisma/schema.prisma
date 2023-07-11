@@ -15,13 +15,34 @@ model User { //this is the user schema which will have the needed field for keep
   name String?
   email String? @unique
   emailverified DateTime?
+  image String?
   hashedPassword String?
   createdAt DateTime @default(now())
   referrer String?
   referralId String? @db.ObjectId @unique
 
+  accounts Account[]
   referrals Referral[]
   treesPlanted Trees[]
+}
+
+model Account {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  type String
+  provider String
+  providerAccountId String
+  refresh_token String? @db.String
+  access_token String? @db.String
+  expires_at Int?
+  token_type String?
+  scope String?
+  id_token String? @db.String
+  session_state String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade )
+
+  @@unique([provider, providerAccountId])
 }
 
 model Referral {
