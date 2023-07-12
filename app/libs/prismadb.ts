@@ -11,4 +11,4 @@ export default client
 
 //this prevents errors from coming up as a result of hot releoad in next 13
 //by initializing prisma client only once
-// import { PrismaClient } from "@prisma/client";
+//this file can then be imported to different processes acrsoss the application
