@@ -16,10 +16,12 @@ import Heading from '../Heading'
 import Input from '../inputs/Input'
 import { toast } from 'react-hot-toast'
 import Button from '../Button'
+import useReferrer from '@/app/hooks/useReferrer'
 
 type Props = {}
 
 const RegisterModal = (props: Props) => {
+    const { referralId } = useReferrer()
     const registerModal = useRegisterModal()
     const [isLoading, setIsLoading] = useState(false)
 
@@ -34,8 +36,8 @@ const RegisterModal = (props: Props) => {
         defaultValues: {
             name: '',
             email: '',
-            password: ''
-
+            password: '',
+            referralId: referralId,
         }
     })
 
