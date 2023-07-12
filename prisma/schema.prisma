@@ -19,7 +19,7 @@ model User { //this is the user schema which will have the needed field for keep
   hashedPassword String?
   createdAt DateTime @default(now())
   referrer String?
-  referralId String? @db.ObjectId @unique
+  referralId String? 
 
   accounts Account[]
   referrals Referral[]

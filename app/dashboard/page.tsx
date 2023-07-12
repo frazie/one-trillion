@@ -11,10 +11,10 @@ export default function Dashboard() {
   // const router = useRouter();
 
   const handleGenerateLink = () => {
-    const referrerId = '33333'; // Replace with the actual referrer ID
-    const id = uuid().split('-')[0]; // Extracting the first segment of UUID
+    const referrer = '33333'; // Replace with the actual referrer ID
+    // const id = uuid().split('-')[0]; // Extracting the first segment of UUID
 
-    const link = `http://localhost:3000/signup?ref=${referrerId}&id=${id}`;
+    const link = `http://localhost:3000?ref=${referrer}`;
     toast.loading('generating your referral link', {duration: 500})
     setReferralLink(link);
   };
