@@ -23,6 +23,7 @@ import useRegisterModal from '@/app/hooks/useRegisterModal'
 type Props = {}
 
 const LoginModal = (props: Props) => {
+    const router = useRouter()
     const registerModal = useRegisterModal()
     const loginModal = useLoginModal()
     const [isLoading, setIsLoading] = useState(false)
@@ -38,13 +39,29 @@ const LoginModal = (props: Props) => {
         defaultValues: {
             email: '',
             password: ''
-
         }
     })
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true)
 
+        signIn('credentials', {
+            ...data,
+            redirect: false,
+        })
+        .then((callback) => {
+            setIsLoading(false)
+
+            if (callback?.ok){
+                toast.success('Logged In')
+                router.push('/dashboard')
+                loginModal.onClose()                
+            }
+
+            if (callback?.error){
+                toast.error(callback.error)
+            }
+        })
         
     }
 
@@ -81,13 +98,13 @@ const LoginModal = (props: Props) => {
             <hr />
             <Button 
                 outline
-                label='Continue with Google'
+                label='Login with Google'
                 icon={FcGoogle}
                 onClick={() => {}}
             />
             <Button 
                 outline
-                label='Continue with Apple'
+                label='ogin with Apple'
                 icon={AiFillApple}
                 onClick={() => {}}
             />
