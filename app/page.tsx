@@ -18,9 +18,7 @@ export default function Home() {
 
             Sign up to contribute to something great!!
             <br />
-            <button onClick={registerModal.onOpen}>Sign up here</button>
-            <br />
-            <button onClick={loginModal.onOpen}>Login</button>
+            
           </div>
         </div>
       
