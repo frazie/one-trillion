@@ -1,6 +1,5 @@
 'use client'
 
-
 import { AiOutlineMenu } from "react-icons/ai"
 import { useState, useCallback } from "react"
 import Avatar from "../Avatar"
@@ -9,13 +8,14 @@ import useLoginModal from "@/app/hooks/useLoginModal"
 import useRegisterModal from "@/app/hooks/useRegisterModal"
 import { signOut } from "next-auth/react"
 import { safeUser } from "@/app/types"
-
+import { useRouter } from "next/navigation"
 
 type Props = {
     currentUser?: safeUser | null
 }
 
 const UserMenu = ({currentUser}: Props) => {
+    const router = useRouter()
     const registerModal = useRegisterModal()
     const loginModal = useLoginModal()
 
@@ -35,7 +35,7 @@ const UserMenu = ({currentUser}: Props) => {
             <div onClick={toggleOpen} className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition">
                 <AiOutlineMenu />
                 <div className="hidden md:block">
-                    <Avatar />
+                    <Avatar src={currentUser?.image} />
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@ const UserMenu = ({currentUser}: Props) => {
                     {currentUser ? (
                         <>
                         <MenuItem onClick={() => {}} label="Profile"/>
-                        <MenuItem onClick={() => {}} label="Dashboard"/>
+                        <MenuItem onClick={() => router.push('/dashboard')} label="Dashboard"/>
                         <MenuItem onClick={() => {}} label="Referrals"/>
                         <hr />
                         <MenuItem onClick={() => signOut()} label="Logout"/>

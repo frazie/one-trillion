@@ -14,7 +14,7 @@ model User { //this is the user schema which will have the needed field for keep
   id String @id @default(auto()) @map("_id") @db.ObjectId
   name String?
   email String? @unique
-  emailverified DateTime?
+  emailVerified DateTime?
   image String?
   hashedPassword String?
   createdAt DateTime @default(now())

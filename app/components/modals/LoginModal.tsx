@@ -1,6 +1,6 @@
 'use client'
 
-import { signIn } from 'next-auth/react'
+
 import axios from 'axios'
 import { FcGoogle } from 'react-icons/fc'
 import { AiFillApple } from 'react-icons/ai'
@@ -19,6 +19,7 @@ import Input from '../inputs/Input'
 import { toast } from 'react-hot-toast'
 import Button from '../Button'
 import useRegisterModal from '@/app/hooks/useRegisterModal'
+import { signIn } from 'next-auth/react'
 
 type Props = {}
 
@@ -100,7 +101,7 @@ const LoginModal = (props: Props) => {
                 outline
                 label='Login with Google'
                 icon={FcGoogle}
-                onClick={() => {}}
+                onClick={() => signIn('google')}
             />
             <Button 
                 outline
