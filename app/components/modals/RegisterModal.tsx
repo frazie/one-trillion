@@ -17,6 +17,7 @@ import Input from '../inputs/Input'
 import { toast } from 'react-hot-toast'
 import Button from '../Button'
 import useReferrer from '@/app/hooks/useReferrer'
+import { signIn } from 'next-auth/react'
 
 type Props = {}
 
@@ -99,7 +100,7 @@ const RegisterModal = (props: Props) => {
                 outline
                 label='Continue with Google'
                 icon={FcGoogle}
-                onClick={() => {}}
+                onClick={() => signIn('google')}
             />
             <Button 
                 outline
