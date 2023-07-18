@@ -7,11 +7,15 @@ import Avatar from "../Avatar"
 import MenuItem from "./MenuItem"
 import useLoginModal from "@/app/hooks/useLoginModal"
 import useRegisterModal from "@/app/hooks/useRegisterModal"
+import { signOut } from "next-auth/react"
+import { safeUser } from "@/app/types"
 
 
-type Props = {}
+type Props = {
+    currentUser?: safeUser | null
+}
 
-const UserMenu = (props: Props) => {
+const UserMenu = ({currentUser}: Props) => {
     const registerModal = useRegisterModal()
     const loginModal = useLoginModal()
 
@@ -39,12 +43,25 @@ const UserMenu = (props: Props) => {
         { isOpen && (
             <div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
                 <div className="flex flex-col cursor-pointer">
-                    <>
+                    {currentUser ? (
+                        <>
+                        <MenuItem onClick={() => {}} label="Profile"/>
+                        <MenuItem onClick={() => {}} label="Dashboard"/>
+                        <MenuItem onClick={() => {}} label="Referrals"/>
+                        <hr />
+                        <MenuItem onClick={() => signOut()} label="Logout"/>
+
+                        
+                    </>
+                    ) : (
+                        <>
                         <MenuItem onClick={loginModal.onOpen} label="Login"/>
                         <MenuItem onClick={registerModal.onOpen} label="Sign Up"/>
 
                         
                     </>
+                    )}
+                    
                 </div>
             </div>
         )}

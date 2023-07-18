@@ -3,11 +3,11 @@
 import Logo from './Logo'
 import React from 'react'
 import Container from '../Container'
-import { User } from '@prisma/client'
 import UserMenu from './UserMenu'
+import { safeUser } from '@/app/types'
 
 type Props = {
-  currentUser?: User | null
+  currentUser?: safeUser | null
 }
 
 const Navbar = ({ currentUser }: Props) => {
@@ -19,7 +19,7 @@ const Navbar = ({ currentUser }: Props) => {
             <Container>
               <div className='flex flex-row items-center justify-between gap-3 md:gap-0'>
                 <Logo />
-                <UserMenu />
+                <UserMenu currentUser={currentUser} />
               </div>
                 
             </Container>
