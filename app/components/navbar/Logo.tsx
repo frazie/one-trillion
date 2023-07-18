@@ -2,12 +2,16 @@
 
 
 import React from 'react'
+import { useRouter } from 'next/navigation'
 
 type Props = {}
 
 const Logo = (props: Props) => {
+  const router = useRouter()
   return (
-    <div className='hidden md:block cursor-pointer'>One trillion trees Demo</div>
+    <div 
+    onClick={() => router.push('/')} 
+    className='hidden md:block cursor-pointer'>One trillion trees Demo</div>
   )
 }
 

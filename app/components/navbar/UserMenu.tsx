@@ -1,6 +1,5 @@
 'use client'
 
-
 import { AiOutlineMenu } from "react-icons/ai"
 import { useState, useCallback } from "react"
 import Avatar from "../Avatar"
@@ -9,13 +8,14 @@ import useLoginModal from "@/app/hooks/useLoginModal"
 import useRegisterModal from "@/app/hooks/useRegisterModal"
 import { signOut } from "next-auth/react"
 import { safeUser } from "@/app/types"
-
+import { useRouter } from "next/navigation"
 
 type Props = {
     currentUser?: safeUser | null
 }
 
 const UserMenu = ({currentUser}: Props) => {
+    const router = useRouter()
     const registerModal = useRegisterModal()
     const loginModal = useLoginModal()
 
@@ -46,7 +46,7 @@ const UserMenu = ({currentUser}: Props) => {
                     {currentUser ? (
                         <>
                         <MenuItem onClick={() => {}} label="Profile"/>
-                        <MenuItem onClick={() => {}} label="Dashboard"/>
+                        <MenuItem onClick={() => router.push('/dashboard')} label="Dashboard"/>
                         <MenuItem onClick={() => {}} label="Referrals"/>
                         <hr />
                         <MenuItem onClick={() => signOut()} label="Logout"/>
