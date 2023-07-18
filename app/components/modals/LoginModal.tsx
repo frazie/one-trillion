@@ -104,7 +104,7 @@ const LoginModal = (props: Props) => {
             />
             <Button 
                 outline
-                label='ogin with Apple'
+                label='Login with Apple'
                 icon={AiFillApple}
                 onClick={() => {}}
             />
