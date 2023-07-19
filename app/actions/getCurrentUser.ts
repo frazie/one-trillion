@@ -29,7 +29,7 @@ export default async function getCurrentUser(){
             return {
                 ...currentUser,
                 createdAt: currentUser.createdAt.toISOString(),
-                emailVerified: currentUser.emailverified?.toISOString() || null,
+                emailVerified: currentUser.emailVerified?.toISOString() || null,
             }
 
     } catch ( error: any) {
