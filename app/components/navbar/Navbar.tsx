@@ -11,7 +11,6 @@ type Props = {
 }
 
 const Navbar = ({ currentUser }: Props) => {
-  console.log(currentUser)
 
   return (
     <div className='fixed w-full bg-grey z-10 shadow-sm'>
