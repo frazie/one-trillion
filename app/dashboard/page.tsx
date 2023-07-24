@@ -6,21 +6,17 @@ import { v4 as uuid } from 'uuid';
 import Container from '../components/Container';
 import { toast } from 'react-hot-toast'
 import { safeUser } from '../types';
-import getCurrentUser from '../actions/getCurrentUser';
+
 
 type Props = {
   currentUser?: safeUser | null
 }
 
 export default function Dashboard({ currentUser }: Props) {
-  // const loggedUser = getCurrentUser()
-
   const [referralLink, setReferralLink] = useState('');
-  // const router = useRouter();
 
   const handleGenerateLink = () => {
-    const referrer = '5556'
-
+    const referrer = currentUser?.id
     const link = `http://localhost:3000?ref=${referrer}`;
     toast.loading('generating your referral link', {duration: 500})
     setReferralLink(link);
