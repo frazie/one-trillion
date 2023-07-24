@@ -23,7 +23,14 @@ export async function POST(
             email,
             name,
             hashedPassword,
-            referralId
+            referralId,
+            referrals: {
+                create: {
+                    referrerId: referralId,
+                    name,
+                    email
+                },
+            },
         }
     })
 
