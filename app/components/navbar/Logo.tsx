@@ -4,9 +4,9 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 
-type Props = {}
+// type Props = {}
 
-const Logo = (props: Props) => {
+const Logo = () => {
   const router = useRouter()
   return (
     <div 

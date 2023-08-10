@@ -1,7 +1,7 @@
 import prisma from "@/app/libs/prismadb";
 
 interface TreeProps {
-    userid: string
+    userid: string  
 }
 
 export default async function getPlantedTrees({userid}: TreeProps) {
@@ -14,5 +14,5 @@ export default async function getPlantedTrees({userid}: TreeProps) {
         }
     })
 
-    return treesPlanted._sum.tree
+    return treesPlanted._sum.tree 
 }

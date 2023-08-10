@@ -1,10 +1,9 @@
 'use client'
 
-
-import axios from 'axios'
+// import axios from 'axios'
 import { FcGoogle } from 'react-icons/fc'
 import { AiFillApple } from 'react-icons/ai'
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 import  {
     FieldValues,
     SubmitHandler,
@@ -18,14 +17,14 @@ import Heading from '../Heading'
 import Input from '../inputs/Input'
 import { toast } from 'react-hot-toast'
 import Button from '../Button'
-import useRegisterModal from '@/app/hooks/useRegisterModal'
+// import useRegisterModal from '@/app/hooks/useRegisterModal'
 import { signIn } from 'next-auth/react'
 
-type Props = {}
+// type Props = {}
 
-const LoginModal = (props: Props) => {
+const LoginModal = () => {
     const router = useRouter()
-    const registerModal = useRegisterModal()
+    // const registerModal = useRegisterModal()
     const loginModal = useLoginModal()
     const [isLoading, setIsLoading] = useState(false)
 

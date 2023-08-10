@@ -1,28 +1,28 @@
 'use client'
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { v4 as uuid } from 'uuid';
+// import { useRouter } from 'next/navigation';
+// import { v4 as uuid } from 'uuid';
 import Container from '../components/Container';
 import { toast } from 'react-hot-toast'
-import { safeUser } from '../types';
+import { SafeUser } from '../types';
 import TreeTable from '../components/tables/TreeTable';
 // import { getUserTrees } from '../actions/getAllTrees';
-import Heading from '../components/Heading';
+// import Heading from '../components/Heading';
 
 type Props = {
-  currentUser?: safeUser | null
+  currentUser?: SafeUser | null
   treeData: any
   // referrals: any
 }
 
-export default function Dashboard({ currentUser, treeData, referrals }: Props) {
+export default function Dashboard({ currentUser, treeData }: Props) {
   const [referralLink, setReferralLink] = useState('');
   const [userTrees, setUserTrees] = useState([])
 
   const handleGenerateLink = () => {
     const referrer = currentUser?.id
-    const link = `process.env.NEXT_PUBLIC_BASE_URL?ref=${referrer}`;
+    const link = `BASE_URL?ref=${referrer}`;
     toast.loading('generating your referral link', {duration: 500})
     setReferralLink(link);
   };
