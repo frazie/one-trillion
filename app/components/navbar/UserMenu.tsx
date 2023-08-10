@@ -45,13 +45,10 @@ const UserMenu = ({currentUser}: Props) => {
                 <div className="flex flex-col cursor-pointer">
                     {currentUser ? (
                         <>
-                        <MenuItem onClick={() => {}} label="Profile"/>
+                        <MenuItem onClick={() => router.push('/profile')} label="Profile"/>
                         <MenuItem onClick={() => router.push('/dashboard')} label="Dashboard"/>
-                        <MenuItem onClick={() => {}} label="Referrals"/>
                         <hr />
                         <MenuItem onClick={() => signOut()} label="Logout"/>
-
-                        
                     </>
                     ) : (
                         <>

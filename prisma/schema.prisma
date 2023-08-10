@@ -12,8 +12,8 @@ datasource db {
 
 model User { //this is the user schema which will have the needed field for keeping information collected for the application
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  name String?
-  email String? @unique
+  name String
+  email String 
   emailVerified DateTime?
   image String?
   hashedPassword String?
@@ -24,6 +24,8 @@ model User { //this is the user schema which will have the needed field for keep
   accounts Account[]
   referrals Referral[]
   treesPlanted Trees[]
+
+  @@unique([email])
 }
 
 model Account {
@@ -60,6 +62,7 @@ model Trees {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   userId String @db.ObjectId 
   tree Int
+  email String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
