@@ -22,7 +22,7 @@ export default function Dashboard({ currentUser, treeData }: Props) {
 
   const handleGenerateLink = () => {
     const referrer = currentUser?.id
-    const link = `BASE_URL?ref=${referrer}`;
+    const link = `${process.env.NEXT_PUBLIC_BASE_URL}?ref=${referrer}`;
     toast.loading('generating your referral link', {duration: 500})
     setReferralLink(link);
   };
