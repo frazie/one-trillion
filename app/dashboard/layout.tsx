@@ -1,8 +1,9 @@
+
 import getCurrentUser from "../actions/getCurrentUser"
 import Dashboard from "./page"
 import { getUserTrees } from "../actions/getAllTrees"
-import getReferrals from "../actions/getReferrals"
-import ClientOnly from "../components/ClientOnly"
+// import getReferrals from "../actions/getReferrals"
+// import ClientOnly from "../components/ClientOnly"
 
 export default async function DashboardLayout({
     children,

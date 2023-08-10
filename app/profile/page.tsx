@@ -8,10 +8,10 @@ import Input from '../components/inputs/Input'
 import Button from '../components/Button'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
-import { safeUser } from '../types'
+import { SafeUser } from '../types'
 
 type Props = {
-    currentUser?: safeUser | null
+    currentUser?: SafeUser | null
     trees: number
 }
 

@@ -3,7 +3,7 @@
 import Image from 'next/image'
 
 import React from 'react'
-import { safeUser } from '../types'
+// import { safeUser } from '../types'
 
 type Props = {
   src: string | null | undefined

@@ -3,7 +3,7 @@
 import axios from 'axios'
 import { FcGoogle } from 'react-icons/fc'
 import { AiFillApple } from 'react-icons/ai'
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 import  {
     FieldValues,
     SubmitHandler,
@@ -19,9 +19,9 @@ import Button from '../Button'
 import useReferrer from '@/app/hooks/useReferrer'
 import { signIn } from 'next-auth/react'
 
-type Props = {}
+// type Props = {}
 
-const RegisterModal = (props: Props) => {
+const RegisterModal = () => {
     const { referralId } = useReferrer()
     const registerModal = useRegisterModal()
     const [isLoading, setIsLoading] = useState(false)

@@ -7,11 +7,11 @@ import MenuItem from "./MenuItem"
 import useLoginModal from "@/app/hooks/useLoginModal"
 import useRegisterModal from "@/app/hooks/useRegisterModal"
 import { signOut } from "next-auth/react"
-import { safeUser } from "@/app/types"
+import { SafeUser } from "@/app/types"
 import { useRouter } from "next/navigation"
 
 type Props = {
-    currentUser?: safeUser | null
+    currentUser?: SafeUser | null
 }
 
 const UserMenu = ({currentUser}: Props) => {

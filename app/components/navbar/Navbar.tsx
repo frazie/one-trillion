@@ -4,10 +4,10 @@ import Logo from './Logo'
 import React from 'react'
 import Container from '../Container'
 import UserMenu from './UserMenu'
-import { safeUser } from '@/app/types'
+import { SafeUser } from '@/app/types'
 
 type Props = {
-  currentUser?: safeUser | null
+  currentUser?: SafeUser | null
 }
 
 const Navbar = ({ currentUser }: Props) => {
