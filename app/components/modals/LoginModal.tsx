@@ -55,7 +55,7 @@ const LoginModal = (props: Props) => {
 
             if (callback?.ok){
                 toast.success('Logged In')
-                router.push('/dashboard')
+                router.push('/profile')
                 loginModal.onClose()                
             }
 
