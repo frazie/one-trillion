@@ -11,6 +11,7 @@ import  {
 } from 'react-hook-form'
 
 import useRegisterModal from '@/app/hooks/useRegisterModal'
+import useLoginModal from '@/app/hooks/useLoginModal'
 import Modal from './Modal'
 import Heading from '../Heading'
 import Input from '../inputs/Input'
@@ -24,6 +25,7 @@ import { signIn } from 'next-auth/react'
 const RegisterModal = () => {
     const { referralId } = useReferrer()
     const registerModal = useRegisterModal()
+    const loginModal = useLoginModal()
     const [isLoading, setIsLoading] = useState(false)
 
     // form control
@@ -38,7 +40,7 @@ const RegisterModal = () => {
             name: '',
             email: '',
             password: '',
-            referralId: referralId,
+            referralId: referralId || '',
         }
     })
 
@@ -102,20 +104,26 @@ const RegisterModal = () => {
                 icon={FcGoogle}
                 onClick={() => signIn('google')}
             />
-            <Button 
+            {/* <Button 
                 outline
                 label='Continue with Apple'
                 icon={AiFillApple}
                 onClick={() => {}}
-            />
+            /> */}
             <div className='text-neutral-500 text-center mt-4 font-light'>
-                <div className='justify-center flex flex-row items-center gap-2'>
+                <div className="text-xs flex justify-center">
+                    <p>By clicking "Create Account" or "Continue with Google", you agree to One trillion Trees TOS and Privacy Policy</p>
+                </div>
+                <div className='justify-center flex flex-row items-center gap-2 mt-2'>
                     <div>
                         Already have an account?
                     </div>
                     <div
-                        onClick={registerModal.onClose}
-                        className='text-neutral-800 cursor-pointer hover:underline'
+                        onClick={() => {
+                            loginModal.onOpen();
+                            registerModal.onClose();
+                        }}
+                        className='text-neutral-800 cursor-pointer hover:underline hover:text-blue-300'
                     >
                         Log In
                     </div>
@@ -129,7 +137,7 @@ const RegisterModal = () => {
         disabled={isLoading}
         isOpen={registerModal.isOpen}
         title='Register'
-        actionLabel='Continue'
+        actionLabel='Create account'
         onClose={registerModal.onClose}
         onSubmit={handleSubmit(onSubmit)}
         body={bodyContent}

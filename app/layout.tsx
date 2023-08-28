@@ -6,6 +6,10 @@ import { Inter } from 'next/font/google'
 import ToasterProvider from './providers/ToasterProvider'
 import LoginModal from './components/modals/LoginModal'
 import getCurrentUser from './actions/getCurrentUser'
+import { getUserTrees } from "./actions/getAllTrees"
+import getPlantedTrees from "./actions/getTrees";
+import getReferrals from "./actions/getReferrals"
+import Home from './page'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,19 +25,15 @@ export default async function RootLayout({
 }) {
 
   const currentUser = await getCurrentUser()
-
+  const Users = await getUserTrees() //trees planted by all users
+  const trees = await getPlantedTrees(); //trees planted by current user
+    const referrer = await getReferrals()
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ClientOnly>
-          <ToasterProvider />
-          <RegisterModal />
-          <LoginModal />
-          <Navbar currentUser={currentUser}/>
-        </ClientOnly>
-        
-        {children}
+          <Home currentUser={currentUser} treeData={Users} referrals={referrer} trees={trees} />      
+        {/* {children} */}
         
       </body>
     </html>

@@ -10,9 +10,10 @@ type Props = {
     required?: boolean
     register: UseFormRegister<FieldValues>
     errors: FieldErrors
+    min?: string
 }
 
-const Input = ({id, label, type, disabled, required, register, errors}: Props) => {
+const Input = ({id, label, type, disabled, required, register, errors, min}: Props) => {
 
 
   return (
@@ -25,12 +26,13 @@ const Input = ({id, label, type, disabled, required, register, errors}: Props) =
             {...register(id, { required })}
             placeholder=" "
             type={type}
+            min={min}
             className={`
                 peer
                 w-full
-                p-4
-                pt-6
-                pl-4
+                p-2
+                pt-4
+                pl-2
                 font-light
                 bg-white
                 border-2
@@ -45,14 +47,14 @@ const Input = ({id, label, type, disabled, required, register, errors}: Props) =
         />
         <label className={`
             absolute
-            text-md
+            text-sm
             duration-150
             transform
             -translate-y-3
-            top-5
+            top-3
             z-10
             origin-[0]
-            left-4
+            left-2
             peer-placeholder-shown:scale-100
             peer-placeholder-shown:translate-y-0
             peer-focus:scale-75

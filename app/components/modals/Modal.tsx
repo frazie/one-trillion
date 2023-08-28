@@ -134,6 +134,8 @@ const Modal: React.FC<ModalProps> = ({
                       onClick={handleSubmit}
                     />
                   </div>
+
+                  <p className="text-sm text-light text-center w-full">or</p>
                       {footer}
                 </div>
               </div>

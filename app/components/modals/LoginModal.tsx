@@ -54,7 +54,7 @@ const LoginModal = () => {
 
             if (callback?.ok){
                 toast.success('Logged In')
-                router.push('/profile')
+                router.refresh()
                 loginModal.onClose()                
             }
 
@@ -98,16 +98,16 @@ const LoginModal = () => {
             <hr />
             <Button 
                 outline
-                label='Login with Google'
+                label='Continue with Google'
                 icon={FcGoogle}
                 onClick={() => signIn('google')}
             />
-            <Button 
+            {/* <Button 
                 outline
                 label='Login with Apple'
                 icon={AiFillApple}
                 onClick={() => {}}
-            />
+            /> */}
         </div>
     )
 

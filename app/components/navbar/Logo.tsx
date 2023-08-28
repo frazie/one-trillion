@@ -11,7 +11,7 @@ const Logo = () => {
   return (
     <div 
     onClick={() => router.push('/')} 
-    className='hidden md:block cursor-pointer'>One trillion trees Demo</div>
+    className=' md:block cursor-pointer'>One trillion trees Demo</div>
   )
 }
 

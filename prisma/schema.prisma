@@ -60,7 +60,7 @@ model Referral {
 
 model Trees {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  userId String @db.ObjectId 
+  userId String @db.ObjectId @unique
   tree Int
   email String?
   createdAt DateTime @default(now())
