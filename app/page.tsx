@@ -106,7 +106,7 @@ export default function Home({ currentUser, trees }: Props) {
           <div className="mb-1 sm:mb-2 lg:mb-3 xl:mb-4 flex flex-col text-left md:text-center">
             <p className="text-[16px] sm:text-lg lg:text-xl xl:text-2xl font-semibold">
               Spread the word & plant your own trees by sharing your personal referral link: <br/>
-              <span className="underline text-blue-300">{referralLink}</span>
+              <span className="underline text-blue-300 text-wrap word-break: break-all">{referralLink}</span>
             </p>
             <button 
               type="button" 
