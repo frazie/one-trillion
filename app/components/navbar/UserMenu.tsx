@@ -28,15 +28,22 @@ const UserMenu = ({currentUser}: Props) => {
 
   return (
     <div className="relative">
-        <div className="flex flex-row items-center gap-3">
-            <div  className=" hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer">
-                Plant a tree
-            </div>
+        <div className="flex flex-row items-center gap-3 ">
+            {currentUser ? (
+                <div className=" md:block text-sm font-semibold py-2 px-4 rounded-full hover:bg-neutral-100 transition shadow-lg cursor-pointer">
+                    {currentUser?.name}
+                </div>
+            ) : (
+                <div onClick={registerModal.onOpen}  className=" md:block text-sm font-semibold py-2 px-4 rounded-full hover:bg-neutral-100 transition shadow-lg cursor-pointer">
+                    Get Started
+                </div>
+            )}
+            
             <div onClick={toggleOpen} className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition">
-                <AiOutlineMenu />
                 <div className="hidden md:block">
                     <Avatar src={currentUser?.image} />
                 </div>
+                <AiOutlineMenu />
             </div>
         </div>
 
@@ -45,14 +52,15 @@ const UserMenu = ({currentUser}: Props) => {
                 <div className="flex flex-col cursor-pointer">
                     {currentUser ? (
                         <>
-                        <MenuItem onClick={() => router.push('/profile')} label="Profile"/>
+                        {/* <MenuItem onClick={() => router.push('/profile')} label="Profile"/>
                         <MenuItem onClick={() => router.push('/dashboard')} label="Dashboard"/>
-                        <hr />
+                        <hr /> */}
                         <MenuItem onClick={() => signOut()} label="Logout"/>
                     </>
                     ) : (
                         <>
                         <MenuItem onClick={loginModal.onOpen} label="Login"/>
+                        <hr />
                         <MenuItem onClick={registerModal.onOpen} label="Sign Up"/>
 
                         

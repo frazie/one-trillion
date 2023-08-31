@@ -1,18 +1,24 @@
 import prisma from "@/app/libs/prismadb";
+import getCurrentUser from "./getCurrentUser";
 
-interface TreeProps {
-    userid: string  
-}
 
-export default async function getPlantedTrees({userid}: TreeProps) {
-    const treesPlanted = await prisma.trees.aggregate({
+
+export default async function getPlantedTrees() {
+    const currentUser = await getCurrentUser()
+
+    const treesPlanted = await prisma.trees.groupBy({
+        by: ['userId'],
+        where: {
+            userId: {
+                equals: currentUser?.id
+            }
+        },
         _sum: {
             tree: true
-        },
-        where: {
-            userId: userid
         }
     })
 
-    return treesPlanted._sum.tree 
+    const aggregateTrees = treesPlanted[0]._sum.tree
+    return aggregateTrees
+    
 }

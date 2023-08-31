@@ -15,7 +15,7 @@ const TreeTable: React.FC<TreeTableProps> = ({ userTrees }) => {
     const sortedUserTrees = userTrees.slice().sort((a, b) => b.numTrees - a.numTrees);
   return (
     <div className="bg-white p-4 shadow-md rounded-lg">
-      <table className="min-w-full">
+      <table className="min-w-full w-full">
         <thead>
           <tr>
           <th className="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">

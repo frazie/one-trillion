@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request){
     const body = await request.json();
-    const { email, trees  } = body;
+    const { email, trees, treeName  } = body;
 
     let user = await prisma.user.findUnique({
         where: {email: email}
@@ -13,7 +13,7 @@ export async function POST(request: Request){
         user = await prisma.user.create({
           data: {
             email: email,
-            name: 'Anonymous', // Set the name to 'Anonymous'
+            name: treeName, 
           },
         });
       }

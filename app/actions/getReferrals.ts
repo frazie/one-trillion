@@ -1,13 +1,13 @@
 import prisma from "@/app/libs/prismadb";
+import getCurrentUser from "./getCurrentUser";
 
-interface ReferralProps {
-    userid: string
-}
 
-export default async function getReferrals({userid}: ReferralProps){
+export default async function getReferrals(){
+    const currentUser = await getCurrentUser()
+
     const userRefferals = await prisma.referral.findMany({
         where: {
-            referrerId: userid
+            referrerId: currentUser?.id || ''
         }
     })
     
