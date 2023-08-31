@@ -25,14 +25,14 @@ export default async function RootLayout({
 }) {
 
   const currentUser = await getCurrentUser()
-  const Users = await getUserTrees() //trees planted by all users
+   //trees planted by all users
   const trees = await getPlantedTrees(); //trees planted by current user
-    const referrer = await getReferrals()
+
 
   return (
     <html lang="en">
       <body className={inter.className}>
-          <Home currentUser={currentUser} treeData={Users} referrals={referrer} trees={trees} />      
+          <Home currentUser={currentUser} trees={trees} />      
         {/* {children} */}
         
       </body>
